@@ -48,16 +48,14 @@ export class DebugVisitor extends TransformVisitor {
     }
 
     protected shouldRemove(): boolean {
-        const env = process.env[this.debugModeEnv];
-        if (env === '1' || env === 'true' || env === '*') {
-            return true;
+        let env = process.env[this.debugModeEnv];
+        if (env === 'debug' && ASC_OPTIMIZE_LEVEL < 2) {
+            return false;
         }
-
-        if (env === 'release' && ASC_OPTIMIZE_LEVEL > 1) {
-            return true;
+        else if (env === '0' || env === 'false') {
+            return false;
         }
-
-        return false;
+        return true;
     }
 
     // TODO: support more decls

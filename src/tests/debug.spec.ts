@@ -9,9 +9,7 @@ function checkDebugVisitor(
 ): void {
     const parser = new Parser();
     parser.parseFile(code, "index.ts", true);
-    process.env["DEBUG_MODE"] = '1';
     visitor.visit(parser.sources[0]);
-    process.env["DEBUG_MODE"] = undefined;
     const actual = ASTBuilder.build(parser.sources[0]);
     expect(actual.trim()).toBe(expected);
 }
@@ -58,5 +56,18 @@ function println(msg: string): void {}
         checkDebugVisitor(visitor, code, expected);
     });
 
+
+    it("do not erase", () => {
+        const code = `
+@debugMode
+function println(msg: string): void {
+  console.log(msg);
+}
+`.trim();
+        const visitor = new DebugVisitor();
+        process.env["DEBUG_MODE"] = '0';
+        checkDebugVisitor(visitor, code, code);
+        process.env["DEBUG_MODE"] = undefined;
+    });
 
 });
