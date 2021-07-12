@@ -8,6 +8,25 @@
 
 ## Usage
 
+### install
+
+```sh
+npm install --save-dev as-debug-transform
+```
+
+Update your asconfig to include the transform:
+
+```json
+{
+  "options": {
+    ... // other options here
+    "transform": ["as-debug-transform"]
+  }
+}
+```
+
+### Syntax
+
 `@debugMode` decorator is used to decorate functions/methods/static methods. Its usage is as simple as `@inline/@global`.
 When a function is decorated, its body will be erased if you want to compile production code.
 
@@ -17,6 +36,6 @@ You can use it in the following ways:
 - Set the env variable `DEBUG_MODE` to `false` or `0`. Transform will always keep function bodies.
 - Set the env variable `DEBUG_MODE` to `debug`. Transform will keep function bodies when `optimizeLevel` < 2.
 
-## Note
+### Note
 
 Now, `debugMode` only support `MethodDeclaration` and `FunctionDeclaration`. Maybe support for classes/namespaces  and more features may be added in the future, but it is practical enough for now.
