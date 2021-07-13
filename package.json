@@ -1,6 +1,6 @@
 {
   "name": "as-debug-transform",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A debug decorator which erase function body for AssemblyScript",
   "license": "MIT",
   "main": "dist/index.js",
