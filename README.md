@@ -38,4 +38,4 @@ You can use it in the following ways:
 
 ### Note
 
-Now, `debugMode` only support `MethodDeclaration` and `FunctionDeclaration`. Maybe support for classes/namespaces  and more features may be added in the future, but it is practical enough for now.
+Now, `debugMode` only support `MethodDeclaration` and `FunctionDeclaration`. Maybe support for classes/namespaces/fields and more features may be added in the future, but it is practical enough for now.

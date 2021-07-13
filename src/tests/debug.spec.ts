@@ -17,7 +17,7 @@ function checkDebugVisitor(
 describe("DebugVisitor", () => {
     it("debug methods", () => {
         const code = `
-class DebugMessage {
+class Debug {
   @debugMode
   static println(msg: string): void {
     console.log(msg);
@@ -30,7 +30,7 @@ class DebugMessage {
 }
 `.trim();
         const expected = `
-class DebugMessage {
+class Debug {
   @debugMode
   static println(msg: string): void {}
   @debugMode
@@ -47,10 +47,17 @@ class DebugMessage {
 function println(msg: string): void {
   console.log(msg);
 }
+@debugMode
+function debugAssert(b: bool, msg: string): void {
+  assert(b, msg);
+}
+
 `.trim();
         const expected = `
 @debugMode
 function println(msg: string): void {}
+@debugMode
+function debugAssert(b: bool, msg: string): void {}
   `.trim();
         const visitor = new DebugVisitor();
         checkDebugVisitor(visitor, code, expected);
@@ -63,6 +70,7 @@ function println(msg: string): void {}
 function println(msg: string): void {
   console.log(msg);
 }
+
 `.trim();
         const visitor = new DebugVisitor();
         process.env["DEBUG_MODE"] = '0';

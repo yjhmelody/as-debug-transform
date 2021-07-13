@@ -11,7 +11,7 @@ import { TransformVisitor } from "visitor-as";
 import { hasDecorator } from "./util";
 
 
-type DebugNode = {
+type DebugFunction = {
     body: Statement | null;
     decorators: DecoratorNode[] | null;
     range: Range;
@@ -39,7 +39,7 @@ export class DebugVisitor extends TransformVisitor {
         return this.removeBody(node);
     }
 
-    protected removeBody<T extends DebugNode>(node: T): T {
+    protected removeBody<T extends DebugFunction>(node: T): T {
         if (hasDecorator(node.decorators, this.debugMode)) {
             // remove all stmts for method
             node.body = new BlockStatement([], node.range);
