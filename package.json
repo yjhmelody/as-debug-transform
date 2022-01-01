@@ -22,7 +22,7 @@
     "visitor-as": "^0.6"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.22",
+    "@types/jest": "^27.4.0",
     "jest": "^26.5",
     "ts-jest": "^26.5.4",
     "ts-node": "^10.2",
