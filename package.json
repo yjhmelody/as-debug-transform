@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "assemblyscript": "^0.19.6",
-    "visitor-as": "^0.6"
+    "visitor-as": "^0.8"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
