@@ -18,7 +18,7 @@
     "test": "jest ."
   },
   "dependencies": {
-    "assemblyscript": "^0.19.6",
+    "assemblyscript": "^0.20.7",
     "visitor-as": "^0.8"
   },
   "devDependencies": {
