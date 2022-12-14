@@ -20,15 +20,16 @@
     "test": "mocha dist/tests/*.spec.js"
   },
   "dependencies": {
-    "assemblyscript": "^0.24",
-    "visitor-as": "^0.11"
+    "assemblyscript": "^0.25",
+    "visitor-as": "^0.11.4"
   },
   "devDependencies": {
     "@types/mocha": "10.0",
-    "mocha": "^10.0",
+    "@types/node": "^18.11.15",
     "@typescript-eslint/eslint-plugin": "^5.46",
     "@typescript-eslint/parser": "^5.46",
     "eslint": "^8.29",
+    "mocha": "^10.0",
     "ts-node": "^10.7",
     "typescript": "^4.8"
   }
