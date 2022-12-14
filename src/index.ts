@@ -1,3 +1,3 @@
-import { DebugVisitor } from "./debug";
+import { DebugVisitor } from "./debug.js";
 
-export = DebugVisitor;
+export default DebugVisitor;
