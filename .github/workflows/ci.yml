@@ -20,7 +20,7 @@ jobs:
           yarn install --immutable
           yarn lint
 
-  test:
+  unit-test:
     strategy:
       matrix:
         node-version: ["16.x", "18.x"]
@@ -36,4 +36,5 @@ jobs:
       - name: test
         run: |
           yarn install --immutable
+          yarn build
           yarn test

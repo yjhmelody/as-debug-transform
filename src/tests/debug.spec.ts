@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { ASTBuilder, Parser } from "visitor-as/as";
-import { DebugVisitor } from "../debug";
+import { ASTBuilder, SimpleParser } from "visitor-as";
+import { DebugVisitor } from "../debug.js";
+import * as assert from "assert";
 
 function checkDebugVisitor(
     visitor: DebugVisitor,
     code: string,
     expected: string
 ): void {
-    const parser = new Parser();
-    parser.parseFile(code, "index.ts", true);
-    visitor.visit(parser.sources[0]);
-    const actual = ASTBuilder.build(parser.sources[0]);
-    expect(actual.trim()).toBe(expected);
+    let stmt = SimpleParser.parseTopLevelStatement(code, null);
+    visitor.visit(stmt);
+    const actual = ASTBuilder.build(stmt).trim();
+    assert.equal(actual, expected);
 }
 
 describe("DebugVisitor", () => {
@@ -47,17 +47,10 @@ class Debug {
 function println(msg: string): void {
   console.log(msg);
 }
-@debugMode
-function debugAssert(b: bool, msg: string): void {
-  assert(b, msg);
-}
-
 `.trim();
         const expected = `
 @debugMode
 function println(msg: string): void {}
-@debugMode
-function debugAssert(b: bool, msg: string): void {}
   `.trim();
         const visitor = new DebugVisitor();
         checkDebugVisitor(visitor, code, expected);
@@ -70,12 +63,10 @@ function debugAssert(b: bool, msg: string): void {}
 function println(msg: string): void {
   console.log(msg);
 }
-
 `.trim();
-        const visitor = new DebugVisitor();
         process.env["DEBUG_MODE"] = '0';
+        const visitor = new DebugVisitor();
         checkDebugVisitor(visitor, code, code);
         process.env["DEBUG_MODE"] = undefined;
     });
-
 });

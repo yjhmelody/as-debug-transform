@@ -6,10 +6,9 @@ import {
     DecoratorNode,
     Range,
     Source,
-} from "assemblyscript";
+} from "assemblyscript/dist/assemblyscript.js";
 import { TransformVisitor } from "visitor-as";
-import { hasDecorator } from "./util";
-
+import { hasDecorator } from "./util.js";
 
 type DebugFunction = {
     body: Statement | null;
@@ -20,6 +19,7 @@ type DebugFunction = {
 export class DebugVisitor extends TransformVisitor {
     debugMode = "debugMode";
     debugModeEnv = "DEBUG_MODE";
+    protected removed: null | boolean = null;
 
     visitSource(node: Source): Source {
         if (!this.shouldRemove()) {
@@ -29,6 +29,10 @@ export class DebugVisitor extends TransformVisitor {
     }
 
     visitMethodDeclaration(node: MethodDeclaration): MethodDeclaration {
+
+        if (!this.shouldRemove()) {
+            return node;
+        }
         return this.removeBody(node);
     }
 
@@ -36,6 +40,9 @@ export class DebugVisitor extends TransformVisitor {
         node: FunctionDeclaration,
         _isDefault?: boolean
     ): FunctionDeclaration {
+        if (!this.shouldRemove()) {
+            return node;
+        }
         return this.removeBody(node);
     }
 
@@ -48,14 +55,20 @@ export class DebugVisitor extends TransformVisitor {
     }
 
     protected shouldRemove(): boolean {
+        if (this.removed != null) {
+            return this.removed;
+        }
         let env = process.env[this.debugModeEnv];
         if (env === 'debug' && ASC_OPTIMIZE_LEVEL < 2) {
-            return false;
+            this.removed = false;
+            return this.removed;
         }
         else if (env === '0' || env === 'false') {
-            return false;
+            this.removed = false;
+            return this.removed;
         }
-        return true;
+        this.removed = true;
+        return this.removed;
     }
 
     // TODO: support more decls

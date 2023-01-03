@@ -1,4 +1,4 @@
-import { DecoratorNode } from "assemblyscript";
+import { DecoratorNode } from "assemblyscript/dist/assemblyscript.js";
 
 /**
  *
