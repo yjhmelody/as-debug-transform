@@ -17,7 +17,8 @@
     "lint": "eslint .",
     "checks": "tsc -p tsconfig.json --noEmit",
     "build": "rm -rf dist/* && tsc -p tsconfig.json",
-    "test": "mocha dist/tests/*.spec.js"
+    "test": "mocha dist/tests/*.spec.js",
+    "prepublish": "yarn build"
   },
   "dependencies": {
     "assemblyscript": "^0.25",
