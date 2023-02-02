@@ -305,9 +305,9 @@ array-union@^2.1.0:
   integrity sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==
 
 assemblyscript@^0.25:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.25.0.tgz#0db76387d042ef01b7414b328fbe38fcaeed24f8"
-  integrity sha512-amIamciuS/sk8a9Ou2PLKyHExIZZIU31mVPEoEISNGJS4ptxbNx27TaQHXrngaW2/AGkpNljWkkzlXUO5K+RHg==
+  version "0.25.2"
+  resolved "https://registry.yarnpkg.com/assemblyscript/-/assemblyscript-0.25.2.tgz#49de9cac3d2657d6419f4214e33c3de6253daa83"
+  integrity sha512-67TQOMvKo23htvSK6lhOzsoQjnplNKkdwgq925uBvQZLDbg9pHfAWhg/R8i8tqKrtk6GH8haOJbQY4oNSQqehA==
   dependencies:
     binaryen "110.0.0-nightly.20221105"
     long "^5.2.0"
