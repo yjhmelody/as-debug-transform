@@ -13,6 +13,10 @@
     "transform",
     "utility"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:yjhmelody/as-debug-transform"
+  },
   "scripts": {
     "lint": "eslint .",
     "checks": "tsc -p tsconfig.json --noEmit",
@@ -36,7 +40,6 @@
   },
   "files": [
     "dist",
-    "tsconfig.json",
     "LICENSE",
     "README.md"
   ]
