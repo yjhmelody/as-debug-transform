@@ -1,7 +1,6 @@
 # as-debug-transform
 
 ![CI](https://github.com/yjhmelody/as-debug-transform/workflows/CI/badge.svg)
-
 ![as-debug-transform](https://img.shields.io/npm/v/as-debug-transform?color=light-green&label=as-debug-transform)
 
 > A simple conditional compilation library for testing or debugging.
